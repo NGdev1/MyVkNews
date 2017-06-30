@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Pods-MyVkNews.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-MyVkNewsTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-MyVkNewsUITests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyVK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>0CBEE4558493F251E91B9EC54902ED26</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>59664C7DF689BA4243EB8D4AEB48ACA1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AAFDFB0857F94350FF58001914007B3D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E875CA2CE1D8125535549701E8E518F9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

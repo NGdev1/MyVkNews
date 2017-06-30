@@ -1,0 +1,6 @@
+framework module Pods_MyVkNewsTests {
+  umbrella header "Pods-MyVkNewsTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
