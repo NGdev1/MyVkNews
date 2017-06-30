@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Pn9-x9-0X7">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Новости-->
+        <scene sceneID="FwA-Et-qcU">
+            <objects>
+                <viewController id="L4g-0q-t4i" customClass="News" customModule="MyVkNews" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rjE-kl-xUs"/>
+                        <viewControllerLayoutGuide type="bottom" id="6LN-Zg-Ubz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pFy-MQ-4aM">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5nn-K8-7Gu">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вероятно, соединение с интернетом прервано" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vH4-dL-Dw1">
+                                <rect key="frame" x="73" y="20" width="230" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="230" id="i76-ZM-5Nz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.84697044690000001" green="0.84697044690000001" blue="0.84697044690000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="5nn-K8-7Gu" secondAttribute="trailing" id="4J3-bM-fXe"/>
+                            <constraint firstItem="5nn-K8-7Gu" firstAttribute="leading" secondItem="pFy-MQ-4aM" secondAttribute="leading" id="T5z-uq-42J"/>
+                            <constraint firstItem="vH4-dL-Dw1" firstAttribute="top" secondItem="rjE-kl-xUs" secondAttribute="bottom" constant="20" id="Xv8-HG-72Y"/>
+                            <constraint firstItem="6LN-Zg-Ubz" firstAttribute="top" secondItem="5nn-K8-7Gu" secondAttribute="bottom" id="eS7-MY-kUt"/>
+                            <constraint firstItem="vH4-dL-Dw1" firstAttribute="centerX" secondItem="pFy-MQ-4aM" secondAttribute="centerX" id="jeT-ch-wY7"/>
+                            <constraint firstItem="5nn-K8-7Gu" firstAttribute="top" secondItem="pFy-MQ-4aM" secondAttribute="top" id="zlY-ab-MgX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Новости" id="tlm-U5-Ykz">
+                        <barButtonItem key="rightBarButtonItem" title="Выход" id="soW-lQ-BZ2">
+                            <color key="tintColor" red="0.74840979456065315" green="0.79380419914538214" blue="0.8116339084102564" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="logout:" destination="L4g-0q-t4i" id="cog-42-JGL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="labelStatus" destination="vH4-dL-Dw1" id="Ody-dO-r7t"/>
+                        <outlet property="tableView" destination="5nn-K8-7Gu" id="orK-0f-s0D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kmv-RL-An2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="774" y="53"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JGY-XX-G1N">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Pn9-x9-0X7" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="ld5-AX-Sij">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.20890863364907655" green="0.36606981035319158" blue="0.57035020734615394" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="ggg-YC-ShP">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="L4g-0q-t4i" kind="relationship" relationship="rootViewController" id="6kq-oU-sG8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ubh-tR-hQQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-30" y="53"/>
+        </scene>
+    </scenes>
+</document>
