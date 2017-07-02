@@ -15,7 +15,7 @@ import SwiftyVK
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var vkDelegateReference : VKDelegate?
+    var vkDelegateReference : VKDelegateImpl?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

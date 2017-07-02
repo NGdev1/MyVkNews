@@ -9,10 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--MyVkNews-->
+        <!--Вход-->
         <scene sceneID="3w4-gy-iY0">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KKF-Ns-LQB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="OSK-ZF-6c7" customClass="Login" customModule="MyVkNews" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="krW-nl-VcQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -86,8 +85,9 @@
                             <outlet property="delegate" destination="OSK-ZF-6c7" id="0Mq-di-g5U"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="MyVkNews" id="9nA-gn-OuD"/>
+                    <navigationItem key="navigationItem" title="Вход" id="9nA-gn-OuD"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KKF-Ns-LQB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6217" y="284"/>
         </scene>

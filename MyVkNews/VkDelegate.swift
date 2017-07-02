@@ -13,6 +13,7 @@ class VKDelegateImpl:  VKDelegate {
     
     let appID = "6085836"
     let scope: Set<VK.Scope> = [.offline, .wall, .friends]
+    public var loginViewController: Login?
     
     init() {
         VK.configure(withAppId: appID, delegate: self)
@@ -31,6 +32,8 @@ class VKDelegateImpl:  VKDelegate {
         print(parameters)
         print("access_token: \(parameters["access_token"]!)")
         _ = VK.API.Stats.trackVisitor([.token : parameters["access_token"]! ])
+
+        loginViewController?.showNews()
     }
     
     func vkDidUnauthorize() {}

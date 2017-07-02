@@ -50,7 +50,11 @@ class News: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
         let loginViewController = loginStoryboard.instantiateInitialViewController()
         
-        self.present(loginViewController!, animated: true)
+        if let delegate = UIApplication.shared.delegate as? AppDelegate {
+            delegate.vkDelegateReference?.loginViewController = loginViewController as? Login
+        }
+        
+        self.navigationController!.pushViewController(loginViewController!, animated: true)
     }
     
     func updateNewsData(_ sender: UIRefreshControl){
@@ -100,7 +104,7 @@ class News: UIViewController, UITableViewDelegate, UITableViewDataSource {
         showLoginVC()
     }
     
-    func getGroupWithId(_ id: Int64) -> Profile? {
+    static func getGroupWithId(_ id: Int64) -> Profile? {
         for group in News.groups {
             let content = JSON(group)
             
@@ -120,7 +124,7 @@ class News: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return nil
     }
     
-    func getProfileWithId(_ id: Int64) -> Profile? {
+    static func getProfileWithId(_ id: Int64) -> Profile? {
         for profile in News.profiles {
             let content = JSON(profile)
             
@@ -161,25 +165,27 @@ class News: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func calculateRowHeight(_ indexPath: IndexPath) -> CGFloat{
         let content = JSON(News.items[indexPath.row / 2])
         
-        var totalHeight: CGFloat = 60
+        var totalHeight: CGFloat = 70
         
         if let text = content["text"].string {
-            let constraintRect = CGSize(width: tableView.frame.width - 36, height: .greatestFiniteMagnitude)
-            let attributes = [
-                NSFontAttributeName: UIFont.systemFont(ofSize: 14.0)
-            ]
-            
-            let textHeight = text.boundingRect(
-                with: constraintRect,
-                options: .usesLineFragmentOrigin,
-                attributes: attributes,
-                context: nil
-                ).height
-            
-            if textHeight > 300 && News.closedCells[indexPath.row / 2] {
-                totalHeight += 300
-            } else {
-                totalHeight += textHeight + 15
+            if !text.isEmpty {
+                let constraintRect = CGSize(width: tableView.frame.width - 36, height: .greatestFiniteMagnitude)
+                let attributes = [
+                    NSFontAttributeName: UIFont.systemFont(ofSize: 14.0)
+                ]
+                
+                let textHeight = text.boundingRect(
+                    with: constraintRect,
+                    options: .usesLineFragmentOrigin,
+                    attributes: attributes,
+                    context: nil
+                    ).height
+                
+                if textHeight > 300 && News.closedCells[indexPath.row / 2] {
+                    totalHeight += 290
+                } else {
+                    totalHeight += textHeight + 6
+                }
             }
         }
         
@@ -218,7 +224,7 @@ class News: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 
                 if var sourceId = content["source_id"].int64 {
                     if sourceId > 0 {
-                        if let profile = self.getProfileWithId(sourceId) {
+                        if let profile = News.getProfileWithId(sourceId) {
                             newsCell.setTitleText(text: profile.name)
                             
                             icache.setImageToCellAndDownloadIfNeed(imageUrl: profile.profileImageUrl,
@@ -233,7 +239,7 @@ class News: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     } else {
                         sourceId = -sourceId
                         
-                        if let profile = self.getGroupWithId(sourceId) {
+                        if let profile = News.getGroupWithId(sourceId) {
                             newsCell.setTitleText(text: profile.name)
                             
                             icache.setImageToCellAndDownloadIfNeed(imageUrl: profile.profileImageUrl,
@@ -289,9 +295,11 @@ class News: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let newsItemStoryboard = UIStoryboard(name: "NewsItem", bundle: nil)
-        guard let newsItemVC = newsItemStoryboard.instantiateInitialViewController() else {
+        guard let newsItemVC = newsItemStoryboard.instantiateInitialViewController() as? NewsItem else {
             return
         }
+        
+        newsItemVC.indexPath = indexPath
         
         self.navigationController?.pushViewController(newsItemVC, animated: true)
     }

@@ -136,6 +136,8 @@ class NewsCell: UITableViewCell, DownloadedImagesInCell {
         if imageFeed.image != nil {
             let prop = frame.width / imageFeed.image!.size.width
             imageFeed.frame.size.height = imageFeed.image!.size.height * prop
+            
+            //print(frame.size.height - imageFeed.frame.origin.y - imageFeed.frame.size.height)
         } else {
             //image may be loading
             var imageFeedHeight = frame.size.height - imageFeed.frame.origin.y - 20

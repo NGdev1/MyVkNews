@@ -10,16 +10,16 @@ import UIKit
 import SwiftyVK
 
 class Login: UITableViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController!.isNavigationBarHidden = true
     }
-
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -31,21 +31,30 @@ class Login: UITableViewController {
             return tableView.frame.height
         }
     }
-
+    
     @IBAction func login(_ sender: Any) {
         VK.logIn()
         
-        let _ = self.navigationController?.popToRootViewController(animated: true)
+        if VK.state != .authorized {
+            VK.API.Account.getInfo().send()
+        }
+        
+        //Vk delegate will call showNews()
+    }
+    
+    func showNews(){
+        self.navigationController!.isNavigationBarHidden = false
+        let _ = self.navigationController!.popToRootViewController(animated: true)
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
